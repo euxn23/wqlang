@@ -15,10 +15,17 @@ int main(int argc, char *argv[])
   // printf("Text: ");
   // scanf("%s", text);
 
-  /* テストデータ */
-  char patt[] = "abcabcab";
-  //=> back = [-1, 0, 0, 0, 1, 2, 3, 4]
-  char text[] = "abcababcabccabcabcacbacacbacbacabcabcbacbacbabcabcbabbbacbabcbacacbacabcabcaba";
+  /* テストデータ.1 */
+  // char patt[] = "abcabcab";
+  // //=> back = [-1, 0, 0, 0, 1, 2, 3, 4]
+  // char text[] = "abababcabccabcabcacbacacbacbacabcabcbacbacbabcabcbabbbacbabcbacacbacabcabcaba";
+
+  /* テストデータ.2 */
+  char patt[] = "abc";
+  //=> back = [-1, 0, 0]
+  char text[] = "abababcabccabcabcacbacacbacbacabcabcbacbacbabcabcbabbbacbabcbacacbacabcabcaba";
+
+
 
   int m = strlen(patt);
   int back[m];
@@ -44,7 +51,7 @@ void kmp_init(char* patt, int back[]){
   /* backの内容を確認 */
   int k;
   for (k=0;k<m;k++) {
-    printf("back%d: %d\n", k, back[k]);
+    printf("back[%d]: %d\n", k, back[k]);
   }
 
 }
