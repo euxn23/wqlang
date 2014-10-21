@@ -8,22 +8,25 @@ void kmp_match(char* patt, char* text, int back[]);
 int main(int argc, char *argv[])
 {
   /* パターン、テキストを入力 */
-  // char patt[1024];
-  // char text[1024];
-  // printf("Pattern: ");
-  // scanf("%s", patt);
-  // printf("Text: ");
-  // scanf("%s", text);
+  char patt[1024];
+  char text[1024];
+  printf("Pattern: ");
+  scanf("%s", patt);
+  printf("Text: ");
+  scanf("%s", text);
 
   /* テストデータ.1 */
   // char patt[] = "abcabcab";
-  // //=> back = [-1, 0, 0, 0, 1, 2, 3, 4]
+  // char patt[] = "abcabcasbckhabljbljalj";
+  //=> back = [-1, 0, 0, 0, 1, 2, 3, 4]
   // char text[] = "abababcabccabcabcacbacacbacbacabcabcbacbacbabcabcbabbbacbabcbacacbacabcabcaba";
+  // char text[] = "abacabcabcbabbbbbbacbacacacacacbabcabcbacbabcabc";
+  // char text[] = "abo;ab;osdbajsbd;ovs:shadbvc;sjdbvcosuvdbiclhabdlvujasbfovjbs;odivb;soadbva;osudbv;aoiskbd;ovsjbf;ovinsfp;kvb;aofiubvo;skfdbv;ojsbf;ovbensfivbs;oudvb;oasufbv;osabfovusabr;ofvjbasofbvosifbvpwasdnc;ksnbf;ovbas;fkvnslfjvbosufbv;laskfbv;oasubfv;osafb;laabcabcasbckhabljbljalj";
 
   /* テストデータ.2 */
-  char patt[] = "abc";
-  //=> back = [-1, 0, 0]
-  char text[] = "abababcabccabcabcacbacacbacbacabcabcbacbacbabcabcbabbbacbabcbacacbacabcabcaba";
+  // char patt[] = "abc";
+  // //=> back = [-1, 0, 0]
+  // char text[] = "abababcabccabcabcacbacacbacbacabcabcbacbacbabcabcbabbbacbabcbacacbacabcabcaba";
 
 
 
@@ -40,19 +43,22 @@ void kmp_init(char* patt, int back[]){
   back[0] = -1;
 
   while(i < m-1) {
+    printf("patt[%d]: %d, patt[%d]: %d\n", i, patt[i], j, patt[j]);
     if((j >= 0) && (patt[i] != patt[j])){
       j = back[j];
+      printf("j = back[j](j = %d)\n", back[j]);
     }
     i++;
     j++;
     back[i] = j;
+    printf("i=%d => back[i]: %d\n", i, j);
   }
 
   /* backの内容を確認 */
-  int k;
-  for (k=0;k<m;k++) {
-    printf("back[%d]: %d\n", k, back[k]);
-  }
+  // int k;
+  // for (k=0;k<m;k++) {
+  //   printf("back[%d]: %d\n", k, back[k]);
+  // }
 
 }
 
