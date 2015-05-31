@@ -1,0 +1,56 @@
+#= IO
+print "Hello World\n"
+println "Hi"
+
+scan x
+println x
+y = scan
+println y
+
+#= Assignment
+number = 42
+bool = true
+calc = 1 * 10
+
+
+#= Function
+func hello_world ->
+  println 'Hello World'
+q
+call hello_world
+
+func square : x ->
+  result = x * x
+q
+x = 'out of scope'
+result = call square : 3
+println result
+#=> 9
+println x
+#=> 'out of scope'
+
+#= Condition
+println 1 >> 0
+println (1 >> 0) && (1 << 0)
+
+if 1 >> 0 ->
+  println 'true'
+q else ->
+  println 'false'
+q
+
+while number <= 50 ->
+  println number
+  if number == 47 ->
+    break
+  q
+  number = number + 1
+q
+
+println 'end'
+
+###
+-- WARNING --
+These are reserved words.
+[while, if, else, func, print, println, scan, call, q, true, false]
+###
